@@ -1,0 +1,168 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0f172a; /* Nền tối sang trọng */
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Khung chứa nội dung */
+.container {
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Badge nhỏ phía trên */
+.subtitle-badge {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #38bdf8;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Tiêu đề chính */
+.main-title {
+    font-size: 2.75rem;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+}
+
+.main-title .highlight {
+    color: #4ade80;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Đoạn mô tả */
+.description {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* Wrapper cho nút */
+.button-wrapper {
+    position: relative;
+}
+
+/* Nút BẮT ĐẦU */
+.btn-rainbow {
+    position: relative;
+    padding: 16px 48px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: #1e293b;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    /* Giữ nguyên font mặc định của trình duyệt cho chữ BẮT ĐẦU */
+    font-family: initial !important;
+}
+
+.btn-rainbow:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Lớp hiệu ứng dải màu 7 sắc cầu vồng nền */
+.btn-rainbow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    
+    /* 7 sắc cầu vồng: Đỏ, Cam, Vàng, Lục, Lam, Chàm, Tím */
+    background: linear-gradient(
+        45deg, 
+        #ff0000, 
+        #ff7f00, 
+        #ffff00, 
+        #00ff00, 
+        #0000ff, 
+        #4b0082, 
+        #9400d3,
+        #ff0000
+    );
+    background-size: 400% 400%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+/* Hiện 7 sắc cầu vồng và chạy chuyển động khi hover */
+.btn-rainbow:hover::before {
+    opacity: 1;
+    animation: rainbowGlow 3s ease infinite;
+}
+
+/* Tạo hiệu ứng phát sáng (Glow) phía sau nút khi hover */
+.btn-rainbow::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(
+        45deg, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000
+    );
+    background-size: 400% 400%;
+    border-radius: 50px;
+    filter: blur(12px);
+    opacity: 0;
+    z-index: -2;
+    transition: opacity 0.5s ease;
+}
+
+.btn-rainbow:hover::after {
+    opacity: 0.7;
+    animation: rainbowGlow 3s ease infinite;
+}
+
+/* Animation cuộn dải cầu vồng */
+@keyframes rainbowGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
